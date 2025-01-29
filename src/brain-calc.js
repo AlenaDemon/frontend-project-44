@@ -15,7 +15,7 @@ export default () => {
       i += 1;
       console.log('Correct!');
     } else {
-      console.log(`'${qest}' is wrong answer ;(. Correct answer was '${result}'.\nLet's try again, ${userName}`);
+      console.log(`'${qest}' is wrong answer ;(. Correct answer was '${result}'.\nLet's try again, ${userName}!`);
       process.exit();
     }
   }
