@@ -3,7 +3,7 @@ import readlineSync from 'readline-sync';
 export default () => {
   console.log('Welcome to the Brain Games!');
   const userName = readlineSync.question('May I have your name? ');
-  console.log(`Hi ${userName}!`);
+  console.log(`Hello, ${userName}!`);
   console.log('Answer "yes" if the number is even, otherwise answer "no".');
   let i = 0;
   while (i < 3) {
@@ -28,5 +28,5 @@ export default () => {
       }
     }
   }
-  console.log(`Congratulations, ${userName}`);
+  console.log(`Congratulations, ${userName}!`);
 };
