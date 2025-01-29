@@ -21,4 +21,18 @@ const resultExpression = (str) => {
   return result;
 };
 
-export { expression, resultExpression, generateNumber };
+const mostCommonDivisor = (str) => {
+  const num = str.split(' ');
+  let a = Number(num[0]);
+  let b = Number(num[1]);
+  while (b !== 0) {
+    const temp = b;
+    b = a % b;
+    a = temp;
+  }
+  return a;
+};
+
+export {
+  expression, resultExpression, generateNumber, mostCommonDivisor,
+};

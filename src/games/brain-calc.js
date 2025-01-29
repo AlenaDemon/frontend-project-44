@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import { expression, resultExpression } from './index.js';
+import { expression, resultExpression } from '../index.js';
 
 export default () => {
   console.log('Welcome to the Brain Games!');
