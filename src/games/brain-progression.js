@@ -1,24 +1,35 @@
-import readlineSync from 'readline-sync';
-import { hiddensqElement, progressionArr } from '../index.js';
+import logicGames from '../index.js';
 
-export default () => {
-  console.log('Welcome to the Brain Games!');
-  const userName = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${userName}!`);
-  console.log('What number is missing in the progression?');
-  let i = 0;
-  while (i < 3) {
-    const progressionArrAndTruNumber = hiddensqElement(progressionArr());
-    const progression = progressionArrAndTruNumber[0];
-    const truNumber = String(progressionArrAndTruNumber[1]);
-    const qest = readlineSync.question(`Question: ${progression}\nYour answer: `);
-    if (qest === truNumber) {
-      i += 1;
-      console.log('Correct!');
-    } else {
-      console.log(`'${qest}' is wrong answer ;(. Correct answer was '${truNumber}'.\nLet's try again, ${userName}!`);
-      process.exit();
-    }
+const generateNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+const progressionArr = () => {
+  const first = generateNumber(1, 10);
+  const i = generateNumber(1, 10);
+  const arr = [];
+  arr.push(first);
+  while (arr.length < 10) {
+    const second = Number(arr.at(-1)) + i;
+    arr.push(second);
   }
-  console.log(`Congratulations, ${userName}!`);
+
+  return arr;
 };
+const hiddensqElement = (arr) => {
+  const num = generateNumber(0, 9);
+  const numTrue = arr[num];
+  const arrNew = arr;
+  arrNew[num] = '..';
+  return [arrNew, [numTrue]];
+};
+
+const rules = 'What number is missing in the progression?';
+const create = () => {
+  const progressionArrAndTruNumber = hiddensqElement(progressionArr());
+  const expression = progressionArrAndTruNumber[0];
+  const trueAnswer = String(progressionArrAndTruNumber[1]);
+  return { question: expression, trueAnswer };
+};
+const progressionGame = () => {
+  logicGames(create, rules);
+};
+export default progressionGame;

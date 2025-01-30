@@ -1,23 +1,21 @@
-import readlineSync from 'readline-sync';
-import { generateNumber, isPrime } from '../index.js';
+import logicGames from '../index.js';
 
-export default () => {
-  console.log('Welcome to the Brain Games!');
-  const userName = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${userName}!`);
-  console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
-  let i = 0;
-  while (i < 3) {
-    const number = generateNumber(1, 100);
-    const trueAnswer = isPrime(number) ? 'yes' : 'no';
-    const qest = readlineSync.question(`Question: ${number}\nYour answer: `);
-    if (qest === trueAnswer) {
-      i += 1;
-      console.log('Correct!');
-    } else {
-      console.log(`'${qest}' is wrong answer ;(. Correct answer was '${trueAnswer}'.\nLet's try again, ${userName}!`);
-      process.exit();
-    }
+const generateNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+const isPrime = (num) => {
+  for (let i = 2; i < num; i += 1) {
+    if (num % i === 0) return false;
   }
-  console.log(`Congratulations, ${userName}!`);
+  return num !== 1;
 };
+
+const rules = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const create = () => {
+  const expression = generateNumber(1, 100);
+  const trueAnswer = isPrime(expression) ? 'yes' : 'no';
+  return { question: expression, trueAnswer };
+};
+const primeGame = () => {
+  logicGames(create, rules);
+};
+export default primeGame;

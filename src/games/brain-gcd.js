@@ -1,23 +1,27 @@
-import readlineSync from 'readline-sync';
-import { generateNumber, mostCommonDivisor } from '../index.js';
+import logicGames from '../index.js';
 
-export default () => {
-  console.log('Welcome to the Brain Games!');
-  const userName = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${userName}!`);
-  console.log('Find the greatest common divisor of given numbers.');
-  let i = 0;
-  while (i < 3) {
-    const num = `${generateNumber(1, 100)} ${generateNumber(1, 100)}`;
-    const result = String(mostCommonDivisor(num));
-    const qest = readlineSync.question(`Question: ${num}\nYour answer: `);
-    if (qest === result) {
-      i += 1;
-      console.log('Correct!');
-    } else {
-      console.log(`'${qest}' is wrong answer ;(. Correct answer was '${result}'.\nLet's try again, ${userName}!`);
-      process.exit();
-    }
+const mostCommonDivisor = (str) => {
+  const num = str.split(' ');
+  let a = Number(num[0]);
+  let b = Number(num[1]);
+  while (b !== 0) {
+    const temp = b;
+    b = a % b;
+    a = temp;
   }
-  console.log(`Congratulations, ${userName}!`);
+  return a;
 };
+
+const generateNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+const rules = 'Find the greatest common divisor of given numbers.';
+
+const create = () => {
+  const expression = `${generateNumber(1, 100)} ${generateNumber(1, 100)}`;
+  const trueAnswer = String(mostCommonDivisor(expression));
+  return { question: expression, trueAnswer };
+};
+const gcdGame = () => {
+  logicGames(create, rules);
+};
+export default gcdGame;
