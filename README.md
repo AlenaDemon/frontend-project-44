@@ -3,3 +3,4 @@
 brain-even: https://asciinema.org/connect/4c4f4b95-3e75-42d3-80a7-d5f4d070c509,
 brain-calc: https://asciinema.org/a/rXxZIYJuaWQyK6OErwSJnfCjE
 brain-gcd: https://asciinema.org/a/KpPmbIPUWpzfRw256DBEQkR5J
+brain-progression: https://asciinema.org/a/4NvqlAnEFavwBDWxa7vLrEw7v

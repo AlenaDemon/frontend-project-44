@@ -1,3 +1,12 @@
+import readlineSync from 'readline-sync';
+
+const greetings = (condition) => {
+  console.log('Welcome to the Brain Games!');
+  const userName = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${userName}!`);
+  console.log(condition);
+};
+
 const generateNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 const expression = () => {
@@ -33,6 +42,27 @@ const mostCommonDivisor = (str) => {
   return a;
 };
 
+const progressionArr = () => {
+  const first = generateNumber(1, 10);
+  const i = generateNumber(1, 10);
+  const arr = [];
+  arr.push(first);
+  while (arr.length < 10) {
+    const second = Number(arr.at(-1)) + i;
+    arr.push(second);
+  }
+
+  return arr;
+};
+const hiddensqElement = (arr) => {
+  const num = generateNumber(0, 9);
+  const numTrue = arr[num];
+  const arrNew = arr;
+  arrNew[num] = '..';
+  return [arrNew, [numTrue]];
+};
+
 export {
-  expression, resultExpression, generateNumber, mostCommonDivisor,
+  expression, resultExpression, generateNumber, mostCommonDivisor, progressionArr, hiddensqElement,
+  greetings,
 };
