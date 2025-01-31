@@ -25,7 +25,7 @@ const hiddensqElement = (arr) => {
 const rules = 'What number is missing in the progression?';
 const create = () => {
   const progressionArrAndTruNumber = hiddensqElement(progressionArr());
-  const expression = progressionArrAndTruNumber[0];
+  const expression = progressionArrAndTruNumber[0].join(' ');
   const trueAnswer = String(progressionArrAndTruNumber[1]);
   return { question: expression, trueAnswer };
 };
