@@ -1,9 +1,9 @@
-import logicGames from '../index.js';
+import runGameLogic from '../index.js';
+import getRandomNumber from '../random.js';
 
-const mostCommonDivisor = (str) => {
-  const num = str.split(' ');
-  let a = Number(num[0]);
-  let b = Number(num[1]);
+const mostCommonDivisor = (num1, num2) => {
+  let a = num1;
+  let b = num2;
   while (b !== 0) {
     const temp = b;
     b = a % b;
@@ -12,16 +12,16 @@ const mostCommonDivisor = (str) => {
   return a;
 };
 
-const generateNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
-
 const rules = 'Find the greatest common divisor of given numbers.';
 
-const create = () => {
-  const expression = `${generateNumber(1, 100)} ${generateNumber(1, 100)}`;
-  const trueAnswer = String(mostCommonDivisor(expression));
+const getExpressionAndAnswer = () => {
+  const num1 = getRandomNumber(100, 1);
+  const num2 = getRandomNumber(100, 1);
+  const expression = `${num1} ${num2}`;
+  const trueAnswer = String(mostCommonDivisor(num1, num2));
   return { question: expression, trueAnswer };
 };
 const gcdGame = () => {
-  logicGames(create, rules);
+  runGameLogic(getExpressionAndAnswer, rules);
 };
 export default gcdGame;

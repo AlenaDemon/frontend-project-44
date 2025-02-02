@@ -1,6 +1,5 @@
-import logicGames from '../index.js';
-
-const generateNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+import runGameLogic from '../index.js';
+import getRandomNumber from '../random.js';
 
 const isPrime = (num) => {
   for (let i = 2; i < num; i += 1) {
@@ -10,12 +9,12 @@ const isPrime = (num) => {
 };
 
 const rules = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-const create = () => {
-  const expression = generateNumber(1, 100);
+const getExpressionAndAnswer = () => {
+  const expression = getRandomNumber(100, 1);
   const trueAnswer = isPrime(expression) ? 'yes' : 'no';
   return { question: expression, trueAnswer };
 };
 const primeGame = () => {
-  logicGames(create, rules);
+  runGameLogic(getExpressionAndAnswer, rules);
 };
 export default primeGame;

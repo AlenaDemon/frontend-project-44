@@ -1,36 +1,32 @@
-import logicGames from '../index.js';
+import runGameLogic from '../index.js';
+import getRandomNumber from '../random.js';
 
-const generateNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
-
-const expressionGet = () => {
-  const num1 = generateNumber(1, 40);
-  const num2 = generateNumber(1, 40);
-  const operationsArr = ['+', '-', '*'];
-  const operations = operationsArr[generateNumber(0, 2)];
-  return `${num1} ${operations} ${num2}`;
-};
-
-const resultExpression = (str) => {
-  const cat = str.split(' ');
-  let result;
-  if (cat.includes('+')) {
-    result = Number(cat[0]) + Number(cat[2]);
-  } else if (cat.includes('-')) {
-    result = Number(cat[0]) - Number(cat[2]);
-  } else if (cat.includes('*')) {
-    result = Number(cat[0]) * Number(cat[2]);
+const calc = (num1, num2, operator) => {
+  switch (operator) {
+    case '+':
+      return num1 + num2;
+    case '-':
+      return num1 - num2;
+    case '*':
+      return num1 * num2;
+    default:
+      throw new Error(`Operator "${operator}" is not part of the program.`);
   }
-  return result;
 };
 
 const rules = 'What is the result of the expression?';
-const create = () => {
-  const expression = expressionGet();
-  const trueAnswer = String(resultExpression(expression));
+const getExpressionAndAnswer = () => {
+  const firstNumber = getRandomNumber(40, 1);
+  const secondNumber = getRandomNumber(40, 1);
+  const operator = ['+', '-', '*'];
+  const randomOperator = operator[getRandomNumber(operator.length - 1, 0)];
+  const expression = `${firstNumber} ${randomOperator} ${secondNumber}`;
+  const trueAnswer = String(calc(firstNumber, secondNumber, randomOperator));
+
   return { question: expression, trueAnswer };
 };
 
 const calcGame = () => {
-  logicGames(create, rules);
+  runGameLogic(getExpressionAndAnswer, rules);
 };
 export default calcGame;
