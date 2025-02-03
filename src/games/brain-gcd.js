@@ -18,7 +18,7 @@ const getExpressionAndAnswer = () => {
   const num1 = getRandomNumber(100, 1);
   const num2 = getRandomNumber(100, 1);
   const expression = `${num1} ${num2}`;
-  const trueAnswer = String(mostCommonDivisor(num1, num2));
+  const trueAnswer = String(getMostCommonDivisor(num1, num2));
   return { question: expression, trueAnswer };
 };
 const gcdGame = () => {
