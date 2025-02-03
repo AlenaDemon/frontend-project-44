@@ -1,7 +1,7 @@
 import runGameLogic from '../index.js';
 import getRandomNumber from '../random.js';
 
-const mostCommonDivisor = (num1, num2) => {
+const getMostCommonDivisor = (num1, num2) => {
   let a = num1;
   let b = num2;
   while (b !== 0) {
