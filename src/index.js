@@ -8,14 +8,14 @@ const runGameLogic = (getExpressionAndAnswer, rules) => {
   let i = 0;
   const questionCount = 3;
   while (i < questionCount) {
-    const questionAndAnswer = getExpressionAndAnswer();
-    console.log(`Question: ${questionAndAnswer.question}`);
+    const expressionAndAnswer = getExpressionAndAnswer();
+    console.log(`Question: ${expressionAndAnswer.question}`);
     const userAnswer = readlineSync.question('Your answer: ');
-    if (userAnswer === questionAndAnswer.trueAnswer) {
+    if (userAnswer === expressionAndAnswer.trueAnswer) {
       i += 1;
       console.log('Correct!');
     } else {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${questionAndAnswer.trueAnswer}'.\nLet's try again, ${userName}!`);
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${expressionAndAnswer.trueAnswer}'.\nLet's try again, ${userName}!`);
       process.exit();
     }
   }

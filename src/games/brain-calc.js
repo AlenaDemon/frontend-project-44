@@ -1,7 +1,7 @@
 import runGameLogic from '../index.js';
 import getRandomNumber from '../random.js';
 
-const calc = (num1, num2, operator) => {
+const runCalc = (num1, num2, operator) => {
   switch (operator) {
     case '+':
       return num1 + num2;
@@ -16,17 +16,17 @@ const calc = (num1, num2, operator) => {
 
 const rules = 'What is the result of the expression?';
 const getExpressionAndAnswer = () => {
-  const firstNumber = getRandomNumber(40, 1);
-  const secondNumber = getRandomNumber(40, 1);
+  const firstNumber = getRandomNumber(1, 40);
+  const secondNumber = getRandomNumber(1, 40);
   const operator = ['+', '-', '*'];
-  const randomOperator = operator[getRandomNumber(operator.length - 1, 0)];
+  const randomOperator = operator[getRandomNumber(0, operator.length - 1)];
   const expression = `${firstNumber} ${randomOperator} ${secondNumber}`;
-  const trueAnswer = String(calc(firstNumber, secondNumber, randomOperator));
+  const trueAnswer = String(runCalc(firstNumber, secondNumber, randomOperator));
 
   return { question: expression, trueAnswer };
 };
 
-const calcGame = () => {
+const runGameCalc = () => {
   runGameLogic(getExpressionAndAnswer, rules);
 };
-export default calcGame;
+export default runGameCalc;
