@@ -14,7 +14,7 @@ const getExpressionAndAnswer = () => {
   const trueAnswer = checkPrime(expression) ? 'yes' : 'no';
   return { question: expression, trueAnswer };
 };
-const primeGame = () => {
+const rumGamePrime = () => {
   runGameLogic(getExpressionAndAnswer, rules);
 };
-export default primeGame;
+export default rumGamePrime;

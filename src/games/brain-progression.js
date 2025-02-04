@@ -11,7 +11,7 @@ const getProgressionArr = (firstNumber, count) => {
 
   return arr;
 };
-const hiddensqElement = (arr) => {
+const getHiddenElement = (arr) => {
   const num = getRandomNumber(0, 9);
   const numTrue = arr[num];
   const arrNew = arr.slice(0);
@@ -23,12 +23,12 @@ const rules = 'What number is missing in the progression?';
 const getExpressionAndAnswer = () => {
   const firstNumber = getRandomNumber(1, 10);
   const count = getRandomNumber(1, 10);
-  const progressionArrAndTruNumber = hiddensqElement(getProgressionArr(firstNumber, count));
+  const progressionArrAndTruNumber = getHiddenElement(getProgressionArr(firstNumber, count));
   const expression = progressionArrAndTruNumber[0].join(' ');
   const trueAnswer = String(progressionArrAndTruNumber[1]);
   return { question: expression, trueAnswer };
 };
-const progressionGame = () => {
+const runGameProgression = () => {
   runGameLogic(getExpressionAndAnswer, rules);
 };
-export default progressionGame;
+export default runGameProgression;
