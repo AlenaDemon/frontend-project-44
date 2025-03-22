@@ -4,7 +4,7 @@
 # Brain games project
 Installation requires downloading the repository.
 ```bash 
-gh repo clone pliginAlexandr/fullstack-javascript-project-44
+gh repo clone AlenaDemon/frontend-project-44
 ```
 Using the "Make" utility, install dependencies with the "make install" command.
 ```bash
